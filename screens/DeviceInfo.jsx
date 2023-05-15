@@ -1,98 +1,75 @@
 import { View, Text, StyleSheet } from "react-native";
 import * as Device from "expo-device";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function DeviceInfo() {
   return (
-        <View style={styles.container}>
-          <Text style={styles.title}>Informações do Aparelho</Text>
-    
-          <View style={styles.textBox}>
-            <Text style={styles.purpleText}>
-              O nome do seu Aparelho é: {Device.osName}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              A Marca do aparelho é: {Device.brand}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              O Modelo do aparelho é: {Device.osName}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              O nome completo do aparelho é: {Device.osName}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              O Design do aparelho é: {Device.osName}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              O Ano de lançamento é: {Device.deviceYearClass}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              A memória do aparelho é: {Device.totalMemory}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              A Versão do sistema é a: {Device.osVersion}
-            </Text>
-      
-            <Text style={styles.purpleText}>
-              A arquitetura do aparelho é: {Device.osName}
-            </Text>
-          </View>
-    
-          <View style={styles.boxBtn}>
-            <Text style={styles.textBtn}>Sair</Text>
-          </View>
-        </View>
+    <View style={styles.container}>
+      <Header title="Informações do Aparelho" />
+
+      <View style={styles.textBox}>
+        <Text style={styles.purpleText}>
+          O nome do seu Aparelho é: {Device.osName}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          A Marca do aparelho é: {Device.brand}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          O Modelo do aparelho é: {Device.osName}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          O nome completo do aparelho é: {Device.osName}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          O Design do aparelho é: {Device.osName}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          O Ano de lançamento é: {Device.deviceYearClass}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          A memória do aparelho é: {Device.totalMemory}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          A Versão do sistema é a: {Device.osVersion}
+        </Text>
+
+        <Text style={styles.purpleText}>
+          A arquitetura do aparelho é: {Device.osName}
+        </Text>
+      </View>
+
+      <Footer />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    gap: 15,
-  },
-
-  title: {
-    color: "#fff",
-    backgroundColor: "#606",
-    padding: 10,
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-
-  textBox: {
+    flex: 1,
     gap: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
   },
-
-  purpleText: {
-    color: "#fff",
+  content: {
+    flex: 1,
+    gap: 20,
+    padding: 20,
+    alignSelf: "center",
+  },
+  contentTextStyle: {
+    padding: 5,
+    textAlignVertical: "center",
+    minHeight: 50,
     backgroundColor: "#969",
-    // textAlign: "center",
-    fontSize: 16,
+    color: "white",
     fontWeight: "bold",
-    width: 230,
-    height: 60,
-    padding: 10,
+    fontSize: 18,
+    textAlign: "center",
   },
-
-  boxBtn: {
-    backgroundColor: "#7C7B7E",
-    alignItems: 'center',
-    paddingVertical: 10,
-    marginTop: 20,
-  },
-
-  textBtn: {
-    backgroundColor: '#4C9BCC',
-    paddingVertical: 5,
-    paddingHorizontal: 90,
-    color: '#fff'
-  }
 });
