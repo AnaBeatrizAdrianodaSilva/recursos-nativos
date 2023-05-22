@@ -27,7 +27,10 @@ export default function BatteryInfo() {
         title="Nível Bateria"
       />
 
-      <Text>
+      <Text style={{
+        color: nivelBateria <= 100 && nivelBateria >= 80 ? 'green' : nivelBateria <= 79 && nivelBateria >= 50 ? 'yellow' : nivelBateria <= 49 && nivelBateria >= 30 ? 'orange' : 'red',
+        fontWeight: 'bolder'
+      }}>
         {nivelBateria}%
       </Text>
 
