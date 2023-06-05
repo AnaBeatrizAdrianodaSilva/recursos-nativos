@@ -1,19 +1,27 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import Header from "../components/Header";
 import * as Notifications from "expo-notifications";
-import { useState } from "react";
+import * as Battery from "expo-battery";
+import { useEffect, useState } from "react";
 
 export default function DeviceInfo() {
   const [expoToken, setExpoToken] = useState();
+  const [battery, setBattery] = useState();
+
+  async function bateria() {
+    const nivel = await Battery.getBatteryLevelAsync();
+    setBattery(Math.round(nivel * 100));
+  }
 
   async function notificarExpo() {
+    await bateria();
     const token = await Notifications.scheduleNotificationAsync({
       content: {
-        title: "Esse é o título da nossa notificação",
+        title: "Bateria",
         subtitle: "Subtitle",
-        body: "Aqui vem o corpo da notificação",
+        body: "Nivel é: " + battery +"%",
       },
-      trigger: { seconds: 5 },
+      trigger: { seconds: 3 },
     });
     setExpoToken(token);
   }
@@ -24,12 +32,13 @@ export default function DeviceInfo() {
 
       <View>
         <Text>Expo Token: {expoToken} </Text>
-        <Button 
+        <Button
           title="Enviar Notificação"
           onPress={async () => await notificarExpo()}
         />
         <Button title="Ler última notificação clicada" />
         <Button title="Ler notificações não clicadas" />
+        <Button title="Mostrar Bateria" onPress={async () => notificarExpo()} />
       </View>
     </View>
   );
