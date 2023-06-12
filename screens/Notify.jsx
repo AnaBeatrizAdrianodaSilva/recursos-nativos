@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, Alert } from "react-native";
 import Header from "../components/Header";
 import * as Notifications from "expo-notifications";
 import * as Battery from "expo-battery";
@@ -40,7 +40,6 @@ export default function DeviceInfo() {
   }
 
   async function notificarExpoDeviceName() {
-    await bateria();
     const token = await Notifications.scheduleNotificationAsync({
       content: {
         title: "Nome do Aparelho",
@@ -54,14 +53,25 @@ export default function DeviceInfo() {
 
   const ultimaNotificacao = Notifications.useLastNotificationResponse();
 
-  async function exibirAlerta() {
-    alert('oi')
-    console.log(ultimaNotificacao);
-  }
+  async function exibirAlerta(){
+        alert(ultimaNotificacao)
+        console.log(ultimaNotificacao)
+    }
 
   useEffect(() => {
-    exibirAlerta();
+    exibirAlerta ()
   }, [ultimaNotificacao])
+
+  
+  async function lerNotificacao(){
+    const exemplo = await Notifications.getLastNotificationResponseAsync();
+    // alert(exemplo)
+    alert('Notificação', exemplo.notification.request.identifier)
+  }
+  
+  async function lerNotificacaoN(){
+    const exemplo = await Notifications.getPresentedNotificationsAsync();
+  }
 
   return (
     <View style={styles.container}>
@@ -73,8 +83,10 @@ export default function DeviceInfo() {
           title="Enviar Notificação"
           onPress={async () => await notificarExpo()}
         />
-        <Button title="Ler última notificação clicada" />
+        <Button title="Ler última notificação clicada"onPress={ async() => lerNotificacao() } />
+
         <Button title="Ler notificações não clicadas" />
+
         <Button title="Mostrar Bateria" onPress={async () => notificarExpoBattery()} />
 
         <Button title="Nome do Aparelho" onPress={async () => notificarExpoDeviceName()} />
