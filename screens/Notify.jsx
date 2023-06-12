@@ -4,8 +4,9 @@ import * as Notifications from "expo-notifications";
 import * as Battery from "expo-battery";
 import * as Device  from "expo-device";
 import { useEffect, useState } from "react";
+import BatteryInfo from "./BatteryInfo";
 
-export default function DeviceInfo() {
+export default function Notify({navigation}) {
   const [expoToken, setExpoToken] = useState();
   const [battery, setBattery] = useState();
 
@@ -73,11 +74,23 @@ export default function DeviceInfo() {
     const exemplo = await Notifications.getPresentedNotificationsAsync();
   }
 
+  async function irParaOutraTela() {
+    const exemplo = await Notifications.getLastNotificationResponseAsync();
+
+    if(exemplo.notification.request.identifier == expoToken) {
+      navigation.navigate(BatteryInfo)
+    } else {
+      alert("Notificação Errada");
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Header title="Notificação" />
 
-      <View>
+      <View style={{
+        gap: 15
+      }}>
         <Text>Expo Token: {expoToken} </Text>
         <Button
           title="Enviar Notificação"
@@ -90,6 +103,8 @@ export default function DeviceInfo() {
         <Button title="Mostrar Bateria" onPress={async () => notificarExpoBattery()} />
 
         <Button title="Nome do Aparelho" onPress={async () => notificarExpoDeviceName()} />
+
+        <Button title="Ir para outra tela" onPress={async () => irParaOutraTela()} />
       </View>
     </View>
   );
