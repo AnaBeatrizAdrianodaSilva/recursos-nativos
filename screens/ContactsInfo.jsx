@@ -44,7 +44,7 @@ export default function ContactInfo() {
             renderItem={({ item }) => <Item item={item} />}
           />
         ) : (
-          <></>
+          <Text>Não possui contatos</Text>
         )}
       </View>
 
