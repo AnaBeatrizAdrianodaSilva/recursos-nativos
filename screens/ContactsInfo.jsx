@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useEffect, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import * as Contacts from "expo-contacts";
 import { FlatList } from "react-native";
@@ -28,7 +28,7 @@ export default function ContactInfo() {
           carregarContatos();
         }
       })();
-    }, []),
+    }, [])
   );
 
   return (
@@ -44,7 +44,7 @@ export default function ContactInfo() {
             renderItem={({ item }) => <Item item={item} />}
           />
         ) : (
-          <Text>Não possui contatos</Text>
+          <Text>Não for possível carregar os contatos</Text>
         )}
       </View>
 
