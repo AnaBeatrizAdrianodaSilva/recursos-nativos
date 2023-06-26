@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 20,
     padding: 20,
-    alignSelf: "center",
   },
   contentTextStyle: {
     padding: 5,
