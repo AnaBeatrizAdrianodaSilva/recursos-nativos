@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import BatteryInfo from "./BatteryInfo";
+import BatteryRotation from "./BatteryRotation";
 import DeviceInfo from "./DeviceInfo";
 import MyScreenOrientation from "./MyScreenOrientation";
 import Notify from "./Notify";
@@ -14,10 +15,11 @@ export default function RootNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Contact" component={ContactInfo} />
 
-        <Stack.Screen name="Agendamento Notificação" component={AgendamentoNotify} />
+        <Stack.Screen name="BatteryRotation" component={BatteryRotation} />
         <Stack.Screen name="Home" component={IndexScreen} />
+        <Stack.Screen name="Agendamento Notificação" component={AgendamentoNotify} />
+        <Stack.Screen name="Contact" component={ContactInfo} />
         <Stack.Screen name="Notificação" component={Notify} />
         <Stack.Screen name="BatteryInfo" component={BatteryInfo} />
         <Stack.Screen name="DeviceInfo" component={DeviceInfo} />
