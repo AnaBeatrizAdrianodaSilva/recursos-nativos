@@ -5,41 +5,47 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import { Button } from "react-native";
 import { useState } from "react";
 
-async function Default() {
-  await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.DEFAULT);
-}
-
-async function DeitarDireita() {
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
-  );
-}
-
-async function DeitarEsquerda() {
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
-  );
-}
-
-async function ForcarNormal() {
-  await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
-}
-
-async function ForcarInverter() {
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.PORTRAIT_DOWN
-  );
-}
-
 export default function ScreenOrientationScreen() {
+  const [cor, setCor] = useState("#000");
   const [info, setInfo] = useState([]);
 
   function informar() {
     setInfo(ScreenOrientation.getOrientationAsync());
   }
 
+  async function Default() {
+    await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.DEFAULT);
+    setCor('#000')
+  }
+  
+  async function DeitarDireita() {
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
+    );
+    setCor('#DCC3C3')
+  }
+  
+  async function DeitarEsquerda() {
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
+    );
+    setCor('#DCD6C3')
+  }
+  
+  async function ForcarNormal() {
+    await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    setCor('#D0DCC3')
+  }
+  
+  async function ForcarInverter() {
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.PORTRAIT_DOWN
+    );
+    setCor('#D3C3DC')
+  }
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: cor }]}>
       <Header style={styles.title} title="Orientação de Tela" />
 
       <Button style={styles.textBtn} title="Padrão" onPress={Default} />
@@ -77,6 +83,7 @@ export default function ScreenOrientationScreen() {
 const styles = StyleSheet.create({
   container: {
     gap: 15,
+    flex: 1,
   },
 
   title: {
