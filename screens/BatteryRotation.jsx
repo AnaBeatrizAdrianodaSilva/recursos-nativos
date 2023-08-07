@@ -43,6 +43,7 @@ export default function BetteryRotation() {
   async function DeitarDireita() {
     await ScreenOrientation.lockAsync(
       ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
+      
     );
   }
 

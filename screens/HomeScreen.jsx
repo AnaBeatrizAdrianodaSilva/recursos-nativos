@@ -8,6 +8,7 @@ import Notify from "./Notify";
 import IndexScreen from "./IndexScreen";
 import ContactInfo from "./ContactsInfo";
 import AgendamentoNotify from "./AgendamentoNotify";
+import Sensors from "./sensors";
 
 const Stack = createMaterialBottomTabNavigator();
 
@@ -16,6 +17,7 @@ export default function RootNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
 
+        <Stack.Screen name="Sensors" component={Sensors} />
         <Stack.Screen name="BatteryRotation" component={BatteryRotation} />
         <Stack.Screen name="Home" component={IndexScreen} />
         <Stack.Screen name="Agendamento Notificação" component={AgendamentoNotify} />
