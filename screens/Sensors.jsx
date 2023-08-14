@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Gyroscope, Magnetometer } from "expo-sensors";
 import { useEffect } from "react";
 
-export default function Sensors() {
+export default function Sensor() {
   const [giroscopio, setGiroscopio] = useState({});
   const [magneto, setMagneto] = useState({});
 
@@ -41,7 +41,7 @@ export default function Sensors() {
           z: {giroscopio.z} {"\n"}
         </Text>
 
-        <Text style={styles.sensor}>
+        <Text>
           Magneto: {"\n"}
           x: {magneto.x} {"\n"}
           y: {magneto.y} {"\n"}

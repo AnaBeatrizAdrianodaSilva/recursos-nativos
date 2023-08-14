@@ -8,7 +8,9 @@ import Notify from "./Notify";
 import IndexScreen from "./IndexScreen";
 import ContactInfo from "./ContactsInfo";
 import AgendamentoNotify from "./AgendamentoNotify";
-import Sensors from "./sensors";
+import Sensors from "./Sensors";
+
+
 
 const Stack = createMaterialBottomTabNavigator();
 
