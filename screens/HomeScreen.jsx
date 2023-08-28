@@ -9,6 +9,7 @@ import IndexScreen from "./IndexScreen";
 import ContactInfo from "./ContactsInfo";
 import AgendamentoNotify from "./AgendamentoNotify";
 import Sensors from "./Sensors";
+import Capture from "./Capture";
 
 
 
@@ -19,6 +20,7 @@ export default function RootNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
 
+        <Stack.Screen name="Capture" component={Capture} />
         <Stack.Screen name="Sensors" component={Sensors} />
         <Stack.Screen name="BatteryRotation" component={BatteryRotation} />
         <Stack.Screen name="Home" component={IndexScreen} />
