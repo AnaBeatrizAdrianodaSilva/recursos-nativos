@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { Button } from "react-native-paper";
 
 import * as ScreenCapture from "expo-screen-capture";
+import * as MediaLibrary from 'expo-media-library';
 import { useEffect } from "react";
 
 export default function Capture() {

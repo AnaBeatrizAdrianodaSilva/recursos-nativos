@@ -11,8 +11,8 @@ import AgendamentoNotify from "./AgendamentoNotify";
 import Sensors from "./Sensors";
 import Capture from "./Capture";
 import MyLocalAuthentication from "./MyLocalAuthentication";
-
-
+import CameraInfo from "./CameraInfo";
+import LocationScreen from "./LocationScreen";
 
 const Stack = createMaterialBottomTabNavigator();
 
@@ -21,6 +21,8 @@ export default function RootNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
 
+        <Stack.Screen name="Location" component={LocationScreen} />
+        <Stack.Screen name="Camera" component={CameraInfo} />
         <Stack.Screen name="Authentication" component={MyLocalAuthentication} />
         <Stack.Screen name="Capture" component={Capture} />
         <Stack.Screen name="Sensors" component={Sensors} />
